@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debloater Master &amp; PC Optimizer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Cabeçalho Principal -->
+  <header class="app-header">
+    <div class="header-left">
+      <div class="logo-box">
+        <h1>DEBLOATER MASTER</h1>
+        <span class="sub-title">Otimizador Extremo &amp; Chris Titus Debloat</span>
+      </div>
+      <div class="admin-badge" id="admin-badge">
+        <span class="badge-dot"></span> ADMINISTRADOR ATIVO
+      </div>
+    </div>
+
+    <!-- Diagnóstico Compacto em Tempo Real -->
+    <div class="sys-metrics" id="sys-metrics">
+      <div class="metric-item">
+        <span class="metric-label">CPU</span>
+        <span class="metric-val" id="metric-cpu">--%</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-label">RAM</span>
+        <span class="metric-val" id="metric-ram">-- GB</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-label">DISCO C:</span>
+        <span class="metric-val" id="metric-disk">-- GB Livres</span>
+      </div>
+      <div class="metric-item">
+        <span class="metric-label">SISTEMA</span>
+        <span class="metric-val" id="metric-os">Windows</span>
+      </div>
+      <div class="metric-item" style="justify-content: center;">
+        <button class="btn btn-small" onclick="closeApp()" style="margin-top: 4px;">Fechar</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Ações Rápidas -->
+  <div class="quick-safety-bar">
+    <div class="safety-left">
+      <button class="btn" onclick="createRestorePoint()">Ponto de Restauração</button>
+      <button class="btn" onclick="disableSupervisionAll()">Desativar Supervisão &amp; 2º Plano</button>
+      <button class="btn" onclick="cleanRamNow()">Otimizar RAM</button>
+      <button class="btn" onclick="rollbackDefaults()">Rollback</button>
+    </div>
+    <div class="safety-right">
+      <button class="btn" onclick="loadAuditData()">Analisar Sistema</button>
+    </div>
+  </div>
+
+  <!-- Navegação por Abas -->
+  <nav class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-essential')">Essencial &amp; Chris Titus</button>
+    <button class="tab-btn" onclick="switchTab('tab-gamer')">Gamer &amp; Latência</button>
+    <button class="tab-btn" onclick="switchTab('tab-services')">Serviços</button>
+    <button class="tab-btn" onclick="switchTab('tab-disk')">Disco &amp; Cache</button>
+    <button class="tab-btn" onclick="switchTab('tab-uwp')">Desbloat Apps</button>
+    <button class="tab-btn" onclick="switchTab('tab-w11')">Explorer &amp; Win 11</button>
+  </nav>
+
+  <!-- Conteúdo das Abas -->
+  <main class="app-content">
+
+    <!-- ABA 1: ESSENCIAL & CHRIS TITUS -->
+    <section id="tab-essential" class="tab-content active">
+      <div class="hero-card">
+        <div class="hero-info">
+          <h3>Preset Master Recomendado (Chris Titus Debloat)</h3>
+          <p>Aplica em lote todas as otimizações essenciais: remove telemetria e diagnósticos de fundo, desativa pesquisas na web do menu Iniciar, desativa anúncios e libera aplicativos desnecessários de segundo plano.</p>
+        </div>
+        <button class="btn btn-large" onclick="applyPreset('standard')">
+          Aplicar Preset Recomendado
+        </button>
+      </div>
+
+      <div class="grid-cards">
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Telemetria &amp; Diagnósticos</h4>
+            <label class="rocker-switch-box" title="Alternar Telemetria">
+              <input type="checkbox" id="tweak-telemetry" onchange="toggleTweak('telemetry', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Bloqueia coleta de dados invasiva, DiagTrack e relatórios em segundo plano da Microsoft.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Bing &amp; Notícias no Iniciar</h4>
+            <label class="rocker-switch-box" title="Alternar Bing e Notícias">
+              <input type="checkbox" id="tweak-bing" onchange="toggleTweak('bing', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Remove sugestões da web, propagandas e destaques de IA da barra de pesquisa do Windows.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Apps em Segundo Plano</h4>
+            <label class="rocker-switch-box" title="Alternar Apps em Segundo Plano">
+              <input type="checkbox" id="tweak-bgapps" onchange="toggleTweak('bgapps', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Impede que aplicativos UWP rodem consumindo memória RAM e ciclos de CPU silenciosamente.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>ID de Anúncios &amp; Rastreamento</h4>
+            <label class="rocker-switch-box" title="Alternar ID de Anúncios">
+              <input type="checkbox" id="tweak-ads" onchange="toggleTweak('ads', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Desativa o identificador de publicidade e coleta de dados de digitação e escrita.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Histórico de Atividades</h4>
+            <label class="rocker-switch-box" title="Alternar Histórico de Atividades">
+              <input type="checkbox" id="tweak-activity" onchange="toggleTweak('activity', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Desativa o envio de linha do tempo e sincronização constante de tarefas com a nuvem.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Supervisão &amp; Keylogger de Digitação</h4>
+            <label class="rocker-switch-box" title="Alternar Bloqueio de Supervisão">
+              <input type="checkbox" id="tweak-supervision" onchange="toggleSupervision(this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Desativa coleta de escrita, teclado, contatos e o processo CompatTelRunner em segundo plano.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Censo de Dispositivos (DeviceCensus)</h4>
+            <label class="rocker-switch-box" title="Alternar Encerramento de Processos de Censo">
+              <input type="checkbox" id="tweak-census" onchange="toggleCensus(this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Mata processos ativos de DeviceCensus, GameBar e fecha tarefas que rastreiam hardware e periféricos.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Consumer Features</h4>
+            <label class="rocker-switch-box" title="Alternar Consumer Features">
+              <input type="checkbox" id="tweak-consumer" onchange="toggleTweak('consumer', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Impede que o Windows instale sozinho jogos patrocinados como Candy Crush na barra Iniciar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 2: GAMER & BAIXA LATÊNCIA -->
+    <section id="tab-gamer" class="tab-content">
+      <div class="hero-card">
+        <div class="hero-info">
+          <h3>Otimizações Competitivas para Jogos &amp; FPS</h3>
+          <p>Reduz o jitter, remove limitadores de pacotes de rede e ativa a prioridade máxima para jogos e placas de vídeo (GPU Priority 8).</p>
+        </div>
+        <button class="btn btn-large" onclick="applyGamerPreset()">
+          Aplicar Modo Gamer Completo
+        </button>
+      </div>
+
+      <div class="grid-cards">
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Network Throttling Desativado</h4>
+            <label class="rocker-switch-box" title="Alternar Network Throttling">
+              <input type="checkbox" id="gamer-net" onchange="toggleGamerTweak('network', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Elimina o gargalo artificial de pacotes de rede do Windows (NetworkThrottlingIndex 0xFFFFFFFF).</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>System Responsiveness 0%</h4>
+            <label class="rocker-switch-box" title="Alternar System Responsiveness">
+              <input type="checkbox" id="gamer-resp" onchange="toggleGamerTweak('responsiveness', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Dedica 100% do processador para aplicativos em foco, sem reservar CPU para serviços secundários.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Mouse 1:1 (Sem Aceleração)</h4>
+            <label class="rocker-switch-box" title="Alternar Mira 1:1">
+              <input type="checkbox" id="gamer-mouse" onchange="toggleGamerTweak('mouse', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Desativa a aceleração de ponteiro para garantir mira 1:1 linear perfeita em qualquer jogo de tiro.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Desativar Xbox GameDVR</h4>
+            <label class="rocker-switch-box" title="Alternar Xbox GameDVR">
+              <input type="checkbox" id="gamer-gamedvr" onchange="toggleGamerTweak('gamedvr', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Impede gravação automática de partidas em segundo plano, liberando memória de vídeo (VRAM).</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Plano Desempenho Máximo</h4>
+            <label class="rocker-switch-box" title="Alternar Plano Desempenho Máximo">
+              <input type="checkbox" id="gamer-powerplan" onchange="togglePowerPlan(this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Configura o plano de energia do Windows para alto rendimento com frequências estabilizadas.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Limpar Cache DNS do Windows</h4>
+            <button class="btn btn-small" onclick="flushDns()">Limpar DNS</button>
+          </div>
+          <p>Executa o comando ipconfig /flushdns para resolver engasgos e renovar a rota de rede.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 3: SERVIÇOS DO WINDOWS -->
+    <section id="tab-services" class="tab-content">
+      <div class="action-banner">
+        <div>
+          <h4>Configurações Pré-definidas de Serviços</h4>
+          <p>Interruptores basculantes com indicador [ | ] (Ligado/Ativo) e [ O ] (Desligado/Desativado). Clique no botão ou no interruptor para alternar o estado de qualquer serviço.</p>
+        </div>
+        <div class="banner-buttons">
+          <button class="btn" onclick="applyServicesPreset('safe')">Perfil Seguro (24 Serviços)</button>
+          <button class="btn" onclick="applyServicesPreset('gamer')">Perfil Gamer Máximo</button>
+          <button class="btn" onclick="applyServicesPreset('restore')">Restaurar Padrões</button>
+        </div>
+      </div>
+
+      <div class="services-list" id="services-list">
+        <div class="loading-state">Carregando catálogo de serviços...</div>
+      </div>
+    </section>
+
+    <!-- ABA 4: LIMPEZA DE DISCO & RAM -->
+    <section id="tab-disk" class="tab-content">
+      <div class="grid-two">
+        <div class="action-card">
+          <h3>Limpeza Profunda de Disco</h3>
+          <p>Remove arquivos das pastas temporárias (%TEMP%, Windows\Temp, Prefetch), caches de instalação do Windows Update antigos e filas de relatórios de erros.</p>
+          <button class="btn btn-large" onclick="cleanDiskDeep()">Executar Limpeza Completa</button>
+        </div>
+
+        <div class="action-card">
+          <h3>Otimizador de Memória RAM</h3>
+          <p>Invoca o esvaziamento imediato da lista de memória de trabalho (WorkingSet) de processos inativos, liberando megabytes de RAM em tempo real.</p>
+          <button class="btn btn-large" onclick="cleanRamNow()">Liberar Memória RAM</button>
+        </div>
+
+        <div class="action-card">
+          <h3>Otimização TRIM para SSDs</h3>
+          <p>Garante que o comando TRIM esteja ativo no sistema de arquivos NTFS para manter velocidade máxima de gravação e aumentar a vida útil do SSD.</p>
+          <button class="btn btn-large" onclick="ensureTrim()">Ativar / Verificar TRIM</button>
+        </div>
+
+        <div class="action-card">
+          <h3>Desativar Hibernação (hiberfil.sys)</h3>
+          <p>Desativa a hibernação do Windows (powercfg -h off), liberando instantaneamente entre 4 GB e 16 GB de espaço no disco local C:.</p>
+          <button class="btn btn-large" onclick="disableHibernation()">Desativar Hibernação</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 5: DESBLOAT UWP & APPS -->
+    <section id="tab-uwp" class="tab-content">
+      <div class="action-banner">
+        <div>
+          <h4>Remoção Segura de Bloatwares de Fábrica</h4>
+          <p>Remove aplicativos pré-instalados inúteis mantendo intactos a Loja, Bloco de Notas, Fotos e Calculadora.</p>
+        </div>
+        <div class="banner-buttons">
+          <button class="btn" onclick="removeSponsoredApps()">Remover Apps Promocionais</button>
+          <button class="btn" onclick="removeAssistants()">Remover Cortana e Dicas</button>
+          <button class="btn" onclick="resurrectStore()">Ressuscitar Microsoft Store</button>
+        </div>
+      </div>
+
+      <div class="grid-two">
+        <div class="action-card">
+          <h3>Remoção do Microsoft Edge</h3>
+          <p>Desinstala completamente o navegador Microsoft Edge nativo e bloqueia suas tarefas e serviços de atualização automática.</p>
+          <button class="btn btn-small" onclick="removeEdge()">Remover Microsoft Edge</button>
+        </div>
+
+        <div class="action-card">
+          <h3>Remoção do Microsoft OneDrive</h3>
+          <p>Desinstala o OneDrive integrado do Windows e remove seus ícones de sincronização do painel lateral do Explorador de Arquivos.</p>
+          <button class="btn btn-small" onclick="removeOneDrive()">Remover Microsoft OneDrive</button>
+        </div>
+      </div>
+
+      <div class="apps-container" id="apps-container">
+        <div class="apps-header">
+          <h4>Aplicativos UWP Detectados</h4>
+          <button class="btn btn-small" onclick="scanApps()">Atualizar Lista</button>
+        </div>
+        <div class="apps-list" id="apps-list">
+          <div class="loading-state">Clique em 'Atualizar Lista' para escanear apps...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABA 6: EXPLORER & WINDOWS 11 -->
+    <section id="tab-w11" class="tab-content">
+      <div class="grid-cards">
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Menu Clássico (Windows 10 no Win 11)</h4>
+            <label class="rocker-switch-box" title="Alternar Menu Clássico">
+              <input type="checkbox" id="w11-classic-menu" onchange="toggleExplorer('classic-menu', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Restaura o menu de botão direito tradicional completo, eliminando o clique em 'Mostrar mais opções'.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Mostrar Extensões de Arquivo</h4>
+            <label class="rocker-switch-box" title="Alternar Extensões de Arquivo">
+              <input type="checkbox" id="w11-show-ext" onchange="toggleExplorer('show-ext', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Exibe sempre a extensão (.exe, .zip, .png) no final de todos os arquivos para maior segurança.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Mostrar Arquivos Ocultos</h4>
+            <label class="rocker-switch-box" title="Alternar Arquivos Ocultos">
+              <input type="checkbox" id="w11-show-hidden" onchange="toggleExplorer('show-hidden', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Mostra pastas e arquivos de sistema ocultos diretamente no Explorador de Arquivos.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Abrir em 'Este Computador'</h4>
+            <label class="rocker-switch-box" title="Alternar Abrir em Este Computador">
+              <input type="checkbox" id="w11-this-pc" onchange="toggleExplorer('this-pc', this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Configura o atalho Win+E para abrir diretamente as unidades de disco em vez do 'Acesso Rápido'.</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Desativar Windows Recall AI</h4>
+            <label class="rocker-switch-box" title="Alternar Windows Recall AI">
+              <input type="checkbox" id="w11-recall" onchange="toggleW11Recall(this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Bloqueia o recurso invasivo de gravação periódica de telas do Windows 11 (Recall 24H2+).</p>
+        </div>
+
+        <div class="tweak-card">
+          <div class="tweak-header">
+            <h4>Bypass Requisitos Windows 11</h4>
+            <label class="rocker-switch-box" title="Alternar Bypass de Requisitos">
+              <input type="checkbox" id="w11-bypass" onchange="toggleW11Bypass(this.checked)">
+              <div class="rocker-bezel">
+                <div class="rocker-switch">
+                  <span class="rocker-half sym-i">|</span>
+                  <span class="rocker-half sym-o">O</span>
+                </div>
+              </div>
+            </label>
+          </div>
+          <p>Aplica chaves LabConfig (ignora checagens de TPM 2.0, SecureBoot e CPU) para atualizações.</p>
+        </div>
+      </div>
+
+      <div class="restart-explorer-box">
+        <span>Para aplicar alterações visuais imediatamente:</span>
+        <button class="btn btn-small" onclick="restartExplorer()">Reiniciar Windows Explorer</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Terminal / Console de Progresso Integrado -->
+  <footer class="app-console">
+    <div class="console-header">
+      <div class="console-title">
+        <span class="terminal-dot"></span>
+        <span>REGISTRO DE OPERAÇÕES EM TEMPO REAL</span>
+      </div>
+      <div class="console-actions">
+        <button class="btn-text" onclick="clearConsole()">Limpar</button>
+      </div>
+    </div>
+    <div class="console-body" id="console-output">
+      <div class="log-line info">[SISTEMA] Debloater Master inicializado com privilégios de Administrador. Pronto para otimizações.</div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

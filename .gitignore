@@ -1,0 +1,10 @@
+# Logs e arquivos de execução temporários
+*.log
+*.tmp
+*.bak
+.vs/
+.vscode/
+
+# Arquivos de sistema do Windows
+Thumbs.db
+Desktop.ini
