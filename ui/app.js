@@ -212,7 +212,8 @@ async function applyGamerPreset() {
 }
 
 async function toggleGamerTweak(type, isChecked) {
-  updateStatusBadge('gamer-' + type, isChecked);
+  const badgeId = (type === 'network') ? 'gamer-net' : ((type === 'responsiveness') ? 'gamer-resp' : ('gamer-' + type));
+  updateStatusBadge(badgeId, isChecked);
   if (type === 'gamedvr') {
     await postApi('/api/tweak-toggle', { id: 'tweak_disable_gamedvr', enable: isChecked });
   } else {
@@ -246,6 +247,7 @@ async function loadServicesList() {
 
       const isOff = !!svc.disabled; // true = desativado (O), false = ativo (I)
       const serviceLabel = svc.displayName || svc.serviceName;
+      const safeName = svc.serviceName.replace(/[^a-zA-Z0-9]/g, '_');
 
       item.innerHTML = `
         <div class="service-meta">
@@ -253,10 +255,10 @@ async function loadServicesList() {
           <span class="service-desc">${escapeHtml(svc.description || svc.serviceName)}</span>
         </div>
         <div class="tweak-controls">
-          <span class="badge-status ${isOff ? 'is-inactive' : 'is-active'}">${isOff ? 'Inativo' : 'Ativo'}</span>
-          <span class="badge-rec" title="Configuração Recomendada">REC</span>
+          <span class="badge-status ${isOff ? 'is-inactive' : 'is-active'}" id="status-svc-${safeName}">${isOff ? 'Inativo' : 'Ativo'}</span>
+          <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Desativar)" onclick="applyRec('svc-toggle-${safeName}', false)">REC</button>
           <label class="rocker-switch-box" title="${isOff ? 'Clique para Ativar este serviço' : 'Clique para Desativar este serviço'}">
-            <input type="checkbox" ${isOff ? '' : 'checked'} onchange="toggleServiceItem('${svc.serviceName}', !this.checked)">
+            <input type="checkbox" id="svc-toggle-${safeName}" ${isOff ? '' : 'checked'} onchange="toggleServiceItem('${svc.serviceName}', !this.checked, 'svc-${safeName}')">
             <div class="rocker-bezel">
               <div class="rocker-switch">
                 <span class="rocker-half sym-i">|</span>
@@ -271,7 +273,8 @@ async function loadServicesList() {
   } catch (err) {}
 }
 
-async function toggleServiceItem(serviceName, shouldDisable) {
+async function toggleServiceItem(serviceName, shouldDisable, badgeKey) {
+  if (badgeKey) updateStatusBadge(badgeKey, !shouldDisable);
   appendLocalLog(`[SERVIÇOS] ${shouldDisable ? 'Desativando' : 'Ativando'} serviço '${serviceName}'...`, 'info');
   await postApi('/api/services-toggle', { serviceName: serviceName, disable: shouldDisable });
   await loadServicesList();
@@ -434,6 +437,17 @@ function updateStatusBadge(id, isChecked) {
     el.innerText = 'Inativo';
     el.className = 'badge-status is-inactive';
   }
+}
+
+function applyRec(targetId, optimalValue = true) {
+  const el = document.getElementById(targetId);
+  if (!el) return;
+  // Se ainda não estiver no estado ótimo recomendado, coloca no recomendado.
+  // Se já estiver no recomendado, alterna para permitir reversão rápida.
+  const targetState = (el.checked !== optimalValue) ? optimalValue : !optimalValue;
+  el.checked = targetState;
+  updateStatusBadge(targetId, targetState);
+  el.dispatchEvent(new Event('change'));
 }
 
 function setSwitch(id, val) {

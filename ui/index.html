@@ -87,7 +87,7 @@
             <h4>Telemetria &amp; Diagnósticos</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-telemetry">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-telemetry', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Telemetria">
                 <input type="checkbox" id="tweak-telemetry" onchange="toggleTweak('telemetry', this.checked)">
                 <div class="rocker-bezel">
@@ -107,7 +107,7 @@
             <h4>Bing &amp; Notícias no Iniciar</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-bing">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-bing', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Bing e Notícias">
                 <input type="checkbox" id="tweak-bing" onchange="toggleTweak('bing', this.checked)">
                 <div class="rocker-bezel">
@@ -127,7 +127,7 @@
             <h4>Apps em Segundo Plano</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-bgapps">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-bgapps', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Apps em Segundo Plano">
                 <input type="checkbox" id="tweak-bgapps" onchange="toggleTweak('bgapps', this.checked)">
                 <div class="rocker-bezel">
@@ -147,7 +147,7 @@
             <h4>ID de Anúncios &amp; Rastreamento</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-ads">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-ads', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar ID de Anúncios">
                 <input type="checkbox" id="tweak-ads" onchange="toggleTweak('ads', this.checked)">
                 <div class="rocker-bezel">
@@ -167,7 +167,7 @@
             <h4>Histórico de Atividades</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-activity">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-activity', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Histórico de Atividades">
                 <input type="checkbox" id="tweak-activity" onchange="toggleTweak('activity', this.checked)">
                 <div class="rocker-bezel">
@@ -187,7 +187,7 @@
             <h4>Supervisão &amp; Keylogger de Digitação</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-supervision">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-supervision', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Bloqueio de Supervisão">
                 <input type="checkbox" id="tweak-supervision" onchange="toggleSupervision(this.checked)">
                 <div class="rocker-bezel">
@@ -207,7 +207,7 @@
             <h4>Censo de Dispositivos (DeviceCensus)</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-census">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-census', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Encerramento de Processos de Censo">
                 <input type="checkbox" id="tweak-census" onchange="toggleCensus(this.checked)">
                 <div class="rocker-bezel">
@@ -227,7 +227,7 @@
             <h4>Consumer Features</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-tweak-consumer">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('tweak-consumer', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Consumer Features">
                 <input type="checkbox" id="tweak-consumer" onchange="toggleTweak('consumer', this.checked)">
                 <div class="rocker-bezel">
@@ -261,8 +261,8 @@
           <div class="tweak-header">
             <h4>Network Throttling Desativado</h4>
             <div class="tweak-controls">
-              <span class="badge-status is-inactive" id="status-gamer-network">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <span class="badge-status is-inactive" id="status-gamer-net">Inativo</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('gamer-net', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Network Throttling">
                 <input type="checkbox" id="gamer-net" onchange="toggleGamerTweak('network', this.checked)">
                 <div class="rocker-bezel">
@@ -281,8 +281,8 @@
           <div class="tweak-header">
             <h4>System Responsiveness 0%</h4>
             <div class="tweak-controls">
-              <span class="badge-status is-inactive" id="status-gamer-responsiveness">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <span class="badge-status is-inactive" id="status-gamer-resp">Inativo</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('gamer-resp', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar System Responsiveness">
                 <input type="checkbox" id="gamer-resp" onchange="toggleGamerTweak('responsiveness', this.checked)">
                 <div class="rocker-bezel">
@@ -302,7 +302,7 @@
             <h4>Mouse 1:1 (Sem Aceleração)</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-gamer-mouse">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('gamer-mouse', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Mira 1:1">
                 <input type="checkbox" id="gamer-mouse" onchange="toggleGamerTweak('mouse', this.checked)">
                 <div class="rocker-bezel">
@@ -322,7 +322,7 @@
             <h4>Desativar Xbox GameDVR</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-gamer-gamedvr">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('gamer-gamedvr', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Xbox GameDVR">
                 <input type="checkbox" id="gamer-gamedvr" onchange="toggleGamerTweak('gamedvr', this.checked)">
                 <div class="rocker-bezel">
@@ -342,7 +342,7 @@
             <h4>Plano Desempenho Máximo</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-gamer-powerplan">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('gamer-powerplan', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Plano Desempenho Máximo">
                 <input type="checkbox" id="gamer-powerplan" onchange="togglePowerPlan(this.checked)">
                 <div class="rocker-bezel">
@@ -462,7 +462,7 @@
             <h4>Menu Clássico (Windows 10 no Win 11)</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-w11-classic-menu">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('w11-classic-menu', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Menu Clássico">
                 <input type="checkbox" id="w11-classic-menu" onchange="toggleExplorer('classic-menu', this.checked)">
                 <div class="rocker-bezel">
@@ -482,7 +482,7 @@
             <h4>Mostrar Extensões de Arquivo</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-w11-show-ext">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('w11-show-ext', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Extensões de Arquivo">
                 <input type="checkbox" id="w11-show-ext" onchange="toggleExplorer('show-ext', this.checked)">
                 <div class="rocker-bezel">
@@ -502,6 +502,7 @@
             <h4>Mostrar Arquivos Ocultos</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-w11-show-hidden">Inativo</span>
+              <button class="badge-rec" type="button" title="Clique para alternar arquivos ocultos" onclick="applyRec('w11-show-hidden', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Arquivos Ocultos">
                 <input type="checkbox" id="w11-show-hidden" onchange="toggleExplorer('show-hidden', this.checked)">
                 <div class="rocker-bezel">
@@ -521,7 +522,7 @@
             <h4>Abrir em 'Este Computador'</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-w11-this-pc">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('w11-this-pc', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Abrir em Este Computador">
                 <input type="checkbox" id="w11-this-pc" onchange="toggleExplorer('this-pc', this.checked)">
                 <div class="rocker-bezel">
@@ -541,7 +542,7 @@
             <h4>Desativar Windows Recall AI</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-w11-recall">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('w11-recall', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Windows Recall AI">
                 <input type="checkbox" id="w11-recall" onchange="toggleW11Recall(this.checked)">
                 <div class="rocker-bezel">
@@ -561,7 +562,7 @@
             <h4>Bypass Requisitos Windows 11</h4>
             <div class="tweak-controls">
               <span class="badge-status is-inactive" id="status-w11-bypass">Inativo</span>
-              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <button class="badge-rec" type="button" title="Clique para aplicar a melhor configuração de desempenho (Recomendado: Ativar)" onclick="applyRec('w11-bypass', true)">REC</button>
               <label class="rocker-switch-box" title="Alternar Bypass de Requisitos">
                 <input type="checkbox" id="w11-bypass" onchange="toggleW11Bypass(this.checked)">
                 <div class="rocker-bezel">

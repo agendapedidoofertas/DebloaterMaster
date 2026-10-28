@@ -287,40 +287,60 @@ h1, h2, h3, h4, h5, h6, p, span, label, div, button {
   justify-content: center;
   padding: 3px 8px;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.6px;
   border-radius: 4px;
+  min-width: 58px;
+  text-align: center;
   transition: all 0.2s ease;
   user-select: none;
 }
 
 .badge-status.is-inactive {
-  background-color: #181a1f;
-  color: #8c93a1;
-  border: 1px solid #363b46;
+  background-color: #16181d !important;
+  color: #9aa1b0 !important;
+  border: 1px solid #363b46 !important;
 }
 
 .badge-status.is-active {
-  background-color: #ffffff;
-  color: #121316;
-  border: 1px solid #ffffff;
-  box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 1px solid #ffffff !important;
+  font-weight: 900 !important;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
+/* Botão REC interativo com melhoria de desempenho */
 .badge-rec {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 3px 6px;
+  padding: 3px 8px;
   font-size: 10px;
   font-weight: 800;
-  color: #ffffff;
-  background: #272a32;
-  border: 1px solid #485060;
+  color: #FFFFFF !important;
+  background-color: #272a33;
+  border: 1px solid #4a5263;
   border-radius: 4px;
   letter-spacing: 0.8px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
   user-select: none;
+}
+
+.badge-rec:hover {
+  background-color: #3b4252;
+  border-color: #ffffff;
+  color: #ffffff !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+.badge-rec:active {
+  transform: translateY(1px);
+  background-color: #1f2229;
 }
 
 .tweak-card p, .action-card p {
