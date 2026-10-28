@@ -442,11 +442,14 @@ function updateStatusBadge(id, isChecked) {
 function applyRec(targetId, optimalValue = true) {
   const el = document.getElementById(targetId);
   if (!el) return;
-  // Se ainda não estiver no estado ótimo recomendado, coloca no recomendado.
-  // Se já estiver no recomendado, alterna para permitir reversão rápida.
-  const targetState = (el.checked !== optimalValue) ? optimalValue : !optimalValue;
-  el.checked = targetState;
-  updateStatusBadge(targetId, targetState);
+  // O botão REC seleciona exclusivamente a melhor configuração recomendada.
+  // Se já estiver na configuração recomendada, mantém inalterado (só desativa clicando no interruptor).
+  if (el.checked === optimalValue) {
+    appendLocalLog('[REC] A melhor configuração recomendada já está ativa para este item!', 'info');
+    return;
+  }
+  el.checked = optimalValue;
+  updateStatusBadge(targetId, optimalValue);
   el.dispatchEvent(new Event('change'));
 }
 
