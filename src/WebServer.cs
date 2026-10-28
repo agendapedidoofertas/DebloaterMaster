@@ -564,8 +564,25 @@ namespace DebloaterPC
         {
             string body = GetRequestBody(req);
             bool enable = body.Contains("\"enable\":true");
-            GamerOptimizer.ApplyGamerPreset(enable);
-            SendJson(res, "{\"success\":true,\"message\":\"Ajustes gamer aplicados com sucesso.\"}");
+            string action = ExtractJsonField(body, "action");
+
+            if (action == "network")
+            {
+                GamerOptimizer.SetNetworkThrottlingDisabled(enable);
+            }
+            else if (action == "mouse")
+            {
+                GamerOptimizer.SetMouseAccelerationDisabled(enable);
+            }
+            else if (action == "responsiveness")
+            {
+                GamerOptimizer.SetNetworkThrottlingDisabled(enable);
+            }
+            else
+            {
+                GamerOptimizer.ApplyGamerPreset(enable);
+            }
+            SendJson(res, "{\"success\":true,\"message\":\"Ajustes gamer processados com sucesso.\"}");
         }
 
         private void HandleW11RecallToggle(HttpListenerRequest req, HttpListenerResponse res)

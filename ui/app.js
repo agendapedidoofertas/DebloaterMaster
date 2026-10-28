@@ -217,7 +217,7 @@ async function toggleGamerTweak(type, isChecked) {
   if (type === 'gamedvr') {
     await postApi('/api/tweak-toggle', { id: 'tweak_disable_gamedvr', enable: isChecked });
   } else {
-    await postApi('/api/gamer-optimize', { enable: isChecked });
+    await postApi('/api/gamer-optimize', { action: type, enable: isChecked });
   }
 }
 
@@ -408,22 +408,37 @@ async function toggleW11Bypass(isChecked) {
   await postApi('/api/w11-labconfig', { enable: isChecked });
 }
 
-// Carregar status da auditoria (checkboxes iniciais)
+// Carregar status real da auditoria do Windows (Leitura cirúrgica do Registro)
 async function loadAuditData() {
   try {
     const res = await fetch('/api/audit');
     if (!res.ok) return;
-    const audit = await res.json();
+    const a = await res.json();
 
-    setSwitch('tweak-telemetry', audit.telemetry_blocked);
-    setSwitch('tweak-bing', audit.search_optimized);
-    setSwitch('tweak-bgapps', audit.background_apps_disabled);
-    setSwitch('tweak-ads', audit.ads_disabled);
-    setSwitch('tweak-activity', audit.activity_history_disabled);
-    setSwitch('tweak-consumer', audit.consumer_features_disabled);
-    setSwitch('w11-classic-menu', audit.classic_context_menu);
-    setSwitch('w11-show-ext', audit.show_file_extensions);
-    setSwitch('w11-show-hidden', audit.show_hidden_files);
+    // 1. Essencial & Chris Titus
+    setSwitch('tweak-telemetry', a.tweak_block_telemetry ?? a.telemetry_blocked);
+    setSwitch('tweak-bing', a.tweak_optimize_search ?? a.search_optimized);
+    setSwitch('tweak-bgapps', a.tweak_disable_background_apps ?? a.background_apps_disabled);
+    setSwitch('tweak-ads', a.tweak_disable_ads_tracking ?? a.ads_disabled);
+    setSwitch('tweak-activity', a.tweak_disable_activity_feed ?? a.activity_history_disabled);
+    setSwitch('tweak-consumer', a.tweak_disable_ads_tracking ?? a.consumer_features_disabled);
+    setSwitch('tweak-supervision', a.tweak_tasks_appraiser);
+    setSwitch('tweak-census', a.tweak_tasks_appraiser);
+
+    // 2. Gamer & Latência
+    setSwitch('gamer-net', a.tweak_gamer_network_throttling);
+    setSwitch('gamer-resp', a.tweak_gamer_network_throttling);
+    setSwitch('gamer-mouse', a.tweak_gamer_mouse_1to1);
+    setSwitch('gamer-gamedvr', a.tweak_disable_gamedvr);
+    setSwitch('gamer-powerplan', a.tweak_high_performance);
+
+    // 3. Explorer & Windows 11
+    setSwitch('w11-classic-menu', a.tweak_classic_context_menu ?? a.classic_context_menu);
+    setSwitch('w11-show-ext', a.tweak_show_file_extensions ?? a.show_file_extensions);
+    setSwitch('w11-show-hidden', a.tweak_show_hidden_files ?? a.show_hidden_files);
+    setSwitch('w11-this-pc', a.tweak_open_this_pc);
+    setSwitch('w11-recall', a.tweak_w11_recall_disable);
+    setSwitch('w11-bypass', a.tweak_w11_labconfig_bypass);
   } catch (err) {}
 }
 

@@ -33,6 +33,9 @@ namespace DebloaterPC
 
             // 4. Interface & Explorer
             state["tweak_classic_context_menu"] = KeyExists(Registry.CurrentUser, @"Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32");
+            state["tweak_show_file_extensions"] = CheckRegDword(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "HideFileExt", 0);
+            state["tweak_show_hidden_files"] = CheckRegDword(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "Hidden", 1);
+            state["tweak_open_this_pc"] = CheckRegDword(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "LaunchTo", 1);
             state["tweak_hide_copilot_widgets"] = CheckRegDword(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "TaskbarDa", 0) &&
                                                   CheckRegDword(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced", "ShowCopilotButton", 0);
             state["tweak_disable_transparency"] = CheckRegDword(Registry.CurrentUser, @"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "EnableTransparency", 0);
