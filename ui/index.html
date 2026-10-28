@@ -85,15 +85,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Telemetria &amp; Diagnósticos</h4>
-            <label class="rocker-switch-box" title="Alternar Telemetria">
-              <input type="checkbox" id="tweak-telemetry" onchange="toggleTweak('telemetry', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-telemetry">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Telemetria">
+                <input type="checkbox" id="tweak-telemetry" onchange="toggleTweak('telemetry', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Bloqueia coleta de dados invasiva, DiagTrack e relatórios em segundo plano da Microsoft.</p>
         </div>
@@ -101,15 +105,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Bing &amp; Notícias no Iniciar</h4>
-            <label class="rocker-switch-box" title="Alternar Bing e Notícias">
-              <input type="checkbox" id="tweak-bing" onchange="toggleTweak('bing', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-bing">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Bing e Notícias">
+                <input type="checkbox" id="tweak-bing" onchange="toggleTweak('bing', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Remove sugestões da web, propagandas e destaques de IA da barra de pesquisa do Windows.</p>
         </div>
@@ -117,15 +125,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Apps em Segundo Plano</h4>
-            <label class="rocker-switch-box" title="Alternar Apps em Segundo Plano">
-              <input type="checkbox" id="tweak-bgapps" onchange="toggleTweak('bgapps', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-bgapps">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Apps em Segundo Plano">
+                <input type="checkbox" id="tweak-bgapps" onchange="toggleTweak('bgapps', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Impede que aplicativos UWP rodem consumindo memória RAM e ciclos de CPU silenciosamente.</p>
         </div>
@@ -133,15 +145,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>ID de Anúncios &amp; Rastreamento</h4>
-            <label class="rocker-switch-box" title="Alternar ID de Anúncios">
-              <input type="checkbox" id="tweak-ads" onchange="toggleTweak('ads', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-ads">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar ID de Anúncios">
+                <input type="checkbox" id="tweak-ads" onchange="toggleTweak('ads', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Desativa o identificador de publicidade e coleta de dados de digitação e escrita.</p>
         </div>
@@ -149,15 +165,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Histórico de Atividades</h4>
-            <label class="rocker-switch-box" title="Alternar Histórico de Atividades">
-              <input type="checkbox" id="tweak-activity" onchange="toggleTweak('activity', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-activity">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Histórico de Atividades">
+                <input type="checkbox" id="tweak-activity" onchange="toggleTweak('activity', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Desativa o envio de linha do tempo e sincronização constante de tarefas com a nuvem.</p>
         </div>
@@ -165,15 +185,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Supervisão &amp; Keylogger de Digitação</h4>
-            <label class="rocker-switch-box" title="Alternar Bloqueio de Supervisão">
-              <input type="checkbox" id="tweak-supervision" onchange="toggleSupervision(this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-supervision">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Bloqueio de Supervisão">
+                <input type="checkbox" id="tweak-supervision" onchange="toggleSupervision(this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Desativa coleta de escrita, teclado, contatos e o processo CompatTelRunner em segundo plano.</p>
         </div>
@@ -181,15 +205,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Censo de Dispositivos (DeviceCensus)</h4>
-            <label class="rocker-switch-box" title="Alternar Encerramento de Processos de Censo">
-              <input type="checkbox" id="tweak-census" onchange="toggleCensus(this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-census">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Encerramento de Processos de Censo">
+                <input type="checkbox" id="tweak-census" onchange="toggleCensus(this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Mata processos ativos de DeviceCensus, GameBar e fecha tarefas que rastreiam hardware e periféricos.</p>
         </div>
@@ -197,15 +225,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Consumer Features</h4>
-            <label class="rocker-switch-box" title="Alternar Consumer Features">
-              <input type="checkbox" id="tweak-consumer" onchange="toggleTweak('consumer', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-tweak-consumer">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Consumer Features">
+                <input type="checkbox" id="tweak-consumer" onchange="toggleTweak('consumer', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Impede que o Windows instale sozinho jogos patrocinados como Candy Crush na barra Iniciar.</p>
         </div>
@@ -228,15 +260,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Network Throttling Desativado</h4>
-            <label class="rocker-switch-box" title="Alternar Network Throttling">
-              <input type="checkbox" id="gamer-net" onchange="toggleGamerTweak('network', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-gamer-network">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Network Throttling">
+                <input type="checkbox" id="gamer-net" onchange="toggleGamerTweak('network', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Elimina o gargalo artificial de pacotes de rede do Windows (NetworkThrottlingIndex 0xFFFFFFFF).</p>
         </div>
@@ -244,15 +280,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>System Responsiveness 0%</h4>
-            <label class="rocker-switch-box" title="Alternar System Responsiveness">
-              <input type="checkbox" id="gamer-resp" onchange="toggleGamerTweak('responsiveness', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-gamer-responsiveness">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar System Responsiveness">
+                <input type="checkbox" id="gamer-resp" onchange="toggleGamerTweak('responsiveness', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Dedica 100% do processador para aplicativos em foco, sem reservar CPU para serviços secundários.</p>
         </div>
@@ -260,15 +300,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Mouse 1:1 (Sem Aceleração)</h4>
-            <label class="rocker-switch-box" title="Alternar Mira 1:1">
-              <input type="checkbox" id="gamer-mouse" onchange="toggleGamerTweak('mouse', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-gamer-mouse">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Mira 1:1">
+                <input type="checkbox" id="gamer-mouse" onchange="toggleGamerTweak('mouse', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Desativa a aceleração de ponteiro para garantir mira 1:1 linear perfeita em qualquer jogo de tiro.</p>
         </div>
@@ -276,15 +320,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Desativar Xbox GameDVR</h4>
-            <label class="rocker-switch-box" title="Alternar Xbox GameDVR">
-              <input type="checkbox" id="gamer-gamedvr" onchange="toggleGamerTweak('gamedvr', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-gamer-gamedvr">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Xbox GameDVR">
+                <input type="checkbox" id="gamer-gamedvr" onchange="toggleGamerTweak('gamedvr', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Impede gravação automática de partidas em segundo plano, liberando memória de vídeo (VRAM).</p>
         </div>
@@ -292,15 +340,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Plano Desempenho Máximo</h4>
-            <label class="rocker-switch-box" title="Alternar Plano Desempenho Máximo">
-              <input type="checkbox" id="gamer-powerplan" onchange="togglePowerPlan(this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-gamer-powerplan">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Plano Desempenho Máximo">
+                <input type="checkbox" id="gamer-powerplan" onchange="togglePowerPlan(this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Configura o plano de energia do Windows para alto rendimento com frequências estabilizadas.</p>
         </div>
@@ -408,15 +460,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Menu Clássico (Windows 10 no Win 11)</h4>
-            <label class="rocker-switch-box" title="Alternar Menu Clássico">
-              <input type="checkbox" id="w11-classic-menu" onchange="toggleExplorer('classic-menu', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-w11-classic-menu">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Menu Clássico">
+                <input type="checkbox" id="w11-classic-menu" onchange="toggleExplorer('classic-menu', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Restaura o menu de botão direito tradicional completo, eliminando o clique em 'Mostrar mais opções'.</p>
         </div>
@@ -424,15 +480,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Mostrar Extensões de Arquivo</h4>
-            <label class="rocker-switch-box" title="Alternar Extensões de Arquivo">
-              <input type="checkbox" id="w11-show-ext" onchange="toggleExplorer('show-ext', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-w11-show-ext">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Extensões de Arquivo">
+                <input type="checkbox" id="w11-show-ext" onchange="toggleExplorer('show-ext', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Exibe sempre a extensão (.exe, .zip, .png) no final de todos os arquivos para maior segurança.</p>
         </div>
@@ -440,15 +500,18 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Mostrar Arquivos Ocultos</h4>
-            <label class="rocker-switch-box" title="Alternar Arquivos Ocultos">
-              <input type="checkbox" id="w11-show-hidden" onchange="toggleExplorer('show-hidden', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-w11-show-hidden">Inativo</span>
+              <label class="rocker-switch-box" title="Alternar Arquivos Ocultos">
+                <input type="checkbox" id="w11-show-hidden" onchange="toggleExplorer('show-hidden', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Mostra pastas e arquivos de sistema ocultos diretamente no Explorador de Arquivos.</p>
         </div>
@@ -456,15 +519,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Abrir em 'Este Computador'</h4>
-            <label class="rocker-switch-box" title="Alternar Abrir em Este Computador">
-              <input type="checkbox" id="w11-this-pc" onchange="toggleExplorer('this-pc', this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-w11-this-pc">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Abrir em Este Computador">
+                <input type="checkbox" id="w11-this-pc" onchange="toggleExplorer('this-pc', this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Configura o atalho Win+E para abrir diretamente as unidades de disco em vez do 'Acesso Rápido'.</p>
         </div>
@@ -472,15 +539,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Desativar Windows Recall AI</h4>
-            <label class="rocker-switch-box" title="Alternar Windows Recall AI">
-              <input type="checkbox" id="w11-recall" onchange="toggleW11Recall(this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-w11-recall">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Windows Recall AI">
+                <input type="checkbox" id="w11-recall" onchange="toggleW11Recall(this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Bloqueia o recurso invasivo de gravação periódica de telas do Windows 11 (Recall 24H2+).</p>
         </div>
@@ -488,15 +559,19 @@
         <div class="tweak-card">
           <div class="tweak-header">
             <h4>Bypass Requisitos Windows 11</h4>
-            <label class="rocker-switch-box" title="Alternar Bypass de Requisitos">
-              <input type="checkbox" id="w11-bypass" onchange="toggleW11Bypass(this.checked)">
-              <div class="rocker-bezel">
-                <div class="rocker-switch">
-                  <span class="rocker-half sym-i">|</span>
-                  <span class="rocker-half sym-o">O</span>
+            <div class="tweak-controls">
+              <span class="badge-status is-inactive" id="status-w11-bypass">Inativo</span>
+              <span class="badge-rec" title="Configuração Recomendada">REC</span>
+              <label class="rocker-switch-box" title="Alternar Bypass de Requisitos">
+                <input type="checkbox" id="w11-bypass" onchange="toggleW11Bypass(this.checked)">
+                <div class="rocker-bezel">
+                  <div class="rocker-switch">
+                    <span class="rocker-half sym-i">|</span>
+                    <span class="rocker-half sym-o">O</span>
+                  </div>
                 </div>
-              </div>
-            </label>
+              </label>
+            </div>
           </div>
           <p>Aplica chaves LabConfig (ignora checagens de TPM 2.0, SecureBoot e CPU) para atualizações.</p>
         </div>

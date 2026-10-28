@@ -146,6 +146,7 @@ async function killSupervisionNow() {
 }
 
 async function toggleSupervision(isChecked) {
+  updateStatusBadge('tweak-supervision', isChecked);
   if (isChecked) {
     await disableSupervisionAll();
   } else {
@@ -154,6 +155,7 @@ async function toggleSupervision(isChecked) {
 }
 
 async function toggleCensus(isChecked) {
+  updateStatusBadge('tweak-census', isChecked);
   if (isChecked) {
     await killSupervisionNow();
   } else {
@@ -162,6 +164,7 @@ async function toggleCensus(isChecked) {
 }
 
 async function togglePowerPlan(isChecked) {
+  updateStatusBadge('gamer-powerplan', isChecked);
   if (isChecked) {
     await applyPowerPlan();
   } else {
@@ -183,6 +186,7 @@ async function applyPreset(type) {
 
 // Tweaks Individuais de Privacidade e Essenciais
 async function toggleTweak(tweakKey, isChecked) {
+  updateStatusBadge('tweak-' + tweakKey, isChecked);
   const mapping = {
     'telemetry': 'tweak_block_telemetry',
     'bing': 'tweak_optimize_search',
@@ -200,13 +204,15 @@ async function toggleTweak(tweakKey, isChecked) {
 async function applyGamerPreset() {
   appendLocalLog('[AÇÃO] Aplicando modo Gamer Completo (Baixa Latência, Prioridade GPU e Mouse 1:1)...', 'info');
   await postApi('/api/gamer-optimize', { enable: true });
-  document.getElementById('gamer-net').checked = true;
-  document.getElementById('gamer-resp').checked = true;
-  document.getElementById('gamer-mouse').checked = true;
-  document.getElementById('gamer-gamedvr').checked = true;
+  setSwitch('gamer-net', true);
+  setSwitch('gamer-resp', true);
+  setSwitch('gamer-mouse', true);
+  setSwitch('gamer-gamedvr', true);
+  setSwitch('gamer-powerplan', true);
 }
 
 async function toggleGamerTweak(type, isChecked) {
+  updateStatusBadge('gamer-' + type, isChecked);
   if (type === 'gamedvr') {
     await postApi('/api/tweak-toggle', { id: 'tweak_disable_gamedvr', enable: isChecked });
   } else {
@@ -246,15 +252,19 @@ async function loadServicesList() {
           <span class="service-name">${escapeHtml(serviceLabel)}</span>
           <span class="service-desc">${escapeHtml(svc.description || svc.serviceName)}</span>
         </div>
-        <label class="rocker-switch-box" title="${isOff ? 'Clique para Ativar este serviço' : 'Clique para Desativar este serviço'}">
-          <input type="checkbox" ${isOff ? '' : 'checked'} onchange="toggleServiceItem('${svc.serviceName}', !this.checked)">
-          <div class="rocker-bezel">
-            <div class="rocker-switch">
-              <span class="rocker-half sym-i">|</span>
-              <span class="rocker-half sym-o">O</span>
+        <div class="tweak-controls">
+          <span class="badge-status ${isOff ? 'is-inactive' : 'is-active'}">${isOff ? 'Inativo' : 'Ativo'}</span>
+          <span class="badge-rec" title="Configuração Recomendada">REC</span>
+          <label class="rocker-switch-box" title="${isOff ? 'Clique para Ativar este serviço' : 'Clique para Desativar este serviço'}">
+            <input type="checkbox" ${isOff ? '' : 'checked'} onchange="toggleServiceItem('${svc.serviceName}', !this.checked)">
+            <div class="rocker-bezel">
+              <div class="rocker-switch">
+                <span class="rocker-half sym-i">|</span>
+                <span class="rocker-half sym-o">O</span>
+              </div>
             </div>
-          </div>
-        </label>
+          </label>
+        </div>
       `;
       container.appendChild(item);
     });
@@ -366,6 +376,7 @@ async function removeSingleApp(pkgFullName) {
 
 // ✨ Explorer & Windows 11
 async function toggleExplorer(actionType, isChecked) {
+  updateStatusBadge('w11-' + actionType, isChecked);
   const mapping = {
     'classic-menu': 'classicMenu',
     'show-ext': 'showExt',
@@ -383,11 +394,13 @@ async function restartExplorer() {
 }
 
 async function toggleW11Recall(isChecked) {
+  updateStatusBadge('w11-recall', isChecked);
   appendLocalLog(`[AÇÃO] Configurando Windows Recall AI: ${isChecked ? 'DESATIVAR' : 'ATIVAR'}...`, 'info');
   await postApi('/api/w11-modern-recall', { disable: isChecked });
 }
 
 async function toggleW11Bypass(isChecked) {
+  updateStatusBadge('w11-bypass', isChecked);
   appendLocalLog(`[AÇÃO] Bypass de Hardware Windows 11 (LabConfig): ${isChecked ? 'ATIVAR' : 'DESATIVAR'}...`, 'info');
   await postApi('/api/w11-labconfig', { enable: isChecked });
 }
@@ -411,9 +424,24 @@ async function loadAuditData() {
   } catch (err) {}
 }
 
+function updateStatusBadge(id, isChecked) {
+  const el = document.getElementById('status-' + id);
+  if (!el) return;
+  if (isChecked) {
+    el.innerText = 'Ativo';
+    el.className = 'badge-status is-active';
+  } else {
+    el.innerText = 'Inativo';
+    el.className = 'badge-status is-inactive';
+  }
+}
+
 function setSwitch(id, val) {
   const el = document.getElementById(id);
-  if (el && val !== undefined) el.checked = !!val;
+  if (el && val !== undefined) {
+    el.checked = !!val;
+    updateStatusBadge(id, !!val);
+  }
 }
 
 function appendLocalLog(text, type = 'info') {

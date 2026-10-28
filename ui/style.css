@@ -263,12 +263,64 @@ h1, h2, h3, h4, h5, h6, p, span, label, div, button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .tweak-header h4 {
   font-size: 13px;
   font-weight: 600;
   color: #FFFFFF !important;
+  flex: 1;
+}
+
+/* Controles de Tweak: Caixinha Status + Tag REC + Interruptor */
+.tweak-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.badge-status.is-inactive {
+  background-color: #181a1f;
+  color: #8c93a1;
+  border: 1px solid #363b46;
+}
+
+.badge-status.is-active {
+  background-color: #ffffff;
+  color: #121316;
+  border: 1px solid #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
+}
+
+.badge-rec {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 6px;
+  font-size: 10px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #272a32;
+  border: 1px solid #485060;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+  user-select: none;
 }
 
 .tweak-card p, .action-card p {
